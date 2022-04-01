@@ -8,11 +8,19 @@ build:
   local:
     push: false
   artifacts:
-    - image: ticketing/auth
+    - image: juanse180198/auth
       context: auth
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
           - src: 'src/**/*.ts'
+            dest: .
+    - image: juanse180198/ticketing-client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.js'
             dest: .
